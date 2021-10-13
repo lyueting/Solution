@@ -6,7 +6,7 @@ import com.example.solution.skill.Walk;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class Rooster implements Walk, Sing {
+public class Rooster extends Animal implements Walk, Sing {
     private static final Logger logger = LoggerFactory.getLogger(Rooster.class);
 
     @Override

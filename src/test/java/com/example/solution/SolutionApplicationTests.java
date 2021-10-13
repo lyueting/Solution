@@ -5,6 +5,11 @@ import ch.qos.logback.classic.spi.ILoggingEvent;
 import ch.qos.logback.core.read.ListAppender;
 import com.example.solution.constant.Constant;
 import com.example.solution.entity.*;
+import com.example.solution.skill.Fly;
+import com.example.solution.skill.Sing;
+import com.example.solution.skill.Swim;
+import com.example.solution.skill.Walk;
+import com.example.solution.util.CountUtil;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.slf4j.LoggerFactory;
@@ -127,6 +132,29 @@ class SolutionApplicationTests {
         butterfly.transform();
 
         Assertions.assertTrue(butterfly.getCurrentState() instanceof Butterfly);
+    }
+
+    @Test
+    void CountSkillTest() {
+        Animal[] animals = new Animal[]{
+                new Bird(),
+                new Duck(),
+                new Chicken(),
+                new Rooster(),
+                new Parrot(new Dog()),
+                new Fish(),
+                new Shark(),
+                new Clownfish(),
+                new Dolphin(),
+                new Dog(),
+                new Butterfly(),
+                new Cat()
+        };
+
+        Assertions.assertEquals(3, CountUtil.countSkill(animals, Fly.class));
+        Assertions.assertEquals(6, CountUtil.countSkill(animals, Walk.class));
+        Assertions.assertEquals(7, CountUtil.countSkill(animals, Sing.class));
+        Assertions.assertEquals(5, CountUtil.countSkill(animals, Swim.class));
     }
 
 }
