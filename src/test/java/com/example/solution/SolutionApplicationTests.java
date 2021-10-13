@@ -7,6 +7,7 @@ import com.example.solution.constant.Constant;
 import com.example.solution.entity.Bird;
 import com.example.solution.entity.Chicken;
 import com.example.solution.entity.Duck;
+import com.example.solution.entity.Rooster;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.slf4j.LoggerFactory;
@@ -57,6 +58,21 @@ class SolutionApplicationTests {
         duck.sing();
 
         Assertions.assertEquals(Constant.DUCK_SING, logsList.get(0)
+                .getMessage());
+    }
+
+    @Test
+    void RoosterSingTest() {
+        Logger logger = (Logger) LoggerFactory.getLogger(Rooster.class);
+        ListAppender<ILoggingEvent> listAppender = new ListAppender<>();
+        listAppender.start();
+        logger.addAppender(listAppender);
+        List<ILoggingEvent> logsList = listAppender.list;
+
+        Rooster rooster = new Rooster();
+        rooster.sing();
+
+        Assertions.assertEquals(Constant.ROOSTER_SING, logsList.get(0)
                 .getMessage());
     }
 
