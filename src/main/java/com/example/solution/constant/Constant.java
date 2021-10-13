@@ -11,4 +11,6 @@ public class Constant {
     public final static String ROOSTER_SING = "Cock-a-doodle-doo";
     public final static String DOG_SING = "Woof, woof";
     public final static String CAT_SING = "Me ow";
+    public final static String CLOWNFISH_SIZE = "small";
+    public final static String SHARK_SIZE = "large";
 }

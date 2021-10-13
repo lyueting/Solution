@@ -88,4 +88,34 @@ class SolutionApplicationTests {
                 .getMessage());
     }
 
+    @Test
+    void SharkSizeTest() {
+        Logger logger = (Logger) LoggerFactory.getLogger(Shark.class);
+        ListAppender<ILoggingEvent> listAppender = new ListAppender<>();
+        listAppender.start();
+        logger.addAppender(listAppender);
+        List<ILoggingEvent> logsList = listAppender.list;
+
+        Shark shark = new Shark();
+        shark.size();
+
+        Assertions.assertEquals(Constant.SHARK_SIZE, logsList.get(0)
+                .getMessage());
+    }
+
+    @Test
+    void ClownfishSizeTest() {
+        Logger logger = (Logger) LoggerFactory.getLogger(Clownfish.class);
+        ListAppender<ILoggingEvent> listAppender = new ListAppender<>();
+        listAppender.start();
+        logger.addAppender(listAppender);
+        List<ILoggingEvent> logsList = listAppender.list;
+
+        Clownfish clownfish = new Clownfish();
+        clownfish.size();
+
+        Assertions.assertEquals(Constant.CLOWNFISH_SIZE, logsList.get(0)
+                .getMessage());
+    }
+
 }
