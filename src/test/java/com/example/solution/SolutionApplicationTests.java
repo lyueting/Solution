@@ -24,7 +24,7 @@ class SolutionApplicationTests {
         Bird bird = new Bird();
         bird.sing();
 
-        Assertions.assertEquals(Constant.ANIMAL_SING, logsList.get(0)
+        Assertions.assertEquals(Constant.DEFAULT_SING, logsList.get(0)
                 .getMessage());
     }
 
@@ -116,6 +116,17 @@ class SolutionApplicationTests {
 
         Assertions.assertEquals(Constant.CLOWNFISH_SIZE, logsList.get(0)
                 .getMessage());
+    }
+
+    @Test
+    void ButterflyTest() {
+        Butterfly butterfly = new Butterfly();
+
+        Assertions.assertTrue(butterfly.getCurrentState() instanceof Caterpillar);
+
+        butterfly.transform();
+
+        Assertions.assertTrue(butterfly.getCurrentState() instanceof Butterfly);
     }
 
 }

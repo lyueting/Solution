@@ -10,6 +10,6 @@ public class SingingAnimal extends Animal implements Sing {
 
     @Override
     public void sing() {
-        logger.info(Constant.ANIMAL_SING);
+        logger.info(Constant.DEFAULT_SING);
     }
 }
