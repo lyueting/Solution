@@ -4,10 +4,10 @@ import com.example.solution.constant.Constant;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class Chicken extends WalkingAnimal {
-    private static final Logger logger = LoggerFactory.getLogger(Chicken.class);
+public class Dog extends WalkingAnimal {
+    private static final Logger logger = LoggerFactory.getLogger(Dog.class);
 
     public void sing() {
-        logger.info(Constant.CHICKEN_SING);
+        logger.info(Constant.DOG_SING);
     }
 }

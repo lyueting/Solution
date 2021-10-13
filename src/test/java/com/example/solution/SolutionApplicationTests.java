@@ -4,10 +4,7 @@ import ch.qos.logback.classic.Logger;
 import ch.qos.logback.classic.spi.ILoggingEvent;
 import ch.qos.logback.core.read.ListAppender;
 import com.example.solution.constant.Constant;
-import com.example.solution.entity.Bird;
-import com.example.solution.entity.Chicken;
-import com.example.solution.entity.Duck;
-import com.example.solution.entity.Rooster;
+import com.example.solution.entity.*;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.slf4j.LoggerFactory;
@@ -18,7 +15,7 @@ class SolutionApplicationTests {
 
     @Test
     void BirdSingTest() {
-        Logger logger = (Logger) LoggerFactory.getLogger(Bird.class);
+        Logger logger = (Logger) LoggerFactory.getLogger(SingingAnimal.class);
         ListAppender<ILoggingEvent> listAppender = new ListAppender<>();
         listAppender.start();
         logger.addAppender(listAppender);
@@ -27,7 +24,7 @@ class SolutionApplicationTests {
         Bird bird = new Bird();
         bird.sing();
 
-        Assertions.assertEquals(Constant.BIRD_SING, logsList.get(0)
+        Assertions.assertEquals(Constant.ANIMAL_SING, logsList.get(0)
                 .getMessage());
     }
 
@@ -73,6 +70,21 @@ class SolutionApplicationTests {
         rooster.sing();
 
         Assertions.assertEquals(Constant.ROOSTER_SING, logsList.get(0)
+                .getMessage());
+    }
+
+    @Test
+    void ParrotNearDogSingTest() {
+        Logger logger = (Logger) LoggerFactory.getLogger(Dog.class);
+        ListAppender<ILoggingEvent> listAppender = new ListAppender<>();
+        listAppender.start();
+        logger.addAppender(listAppender);
+        List<ILoggingEvent> logsList = listAppender.list;
+
+        Parrot parrot = new Parrot(new Dog());
+        parrot.sing();
+
+        Assertions.assertEquals(Constant.DOG_SING, logsList.get(0)
                 .getMessage());
     }
 
