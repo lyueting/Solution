@@ -3,7 +3,10 @@ package com.example.solution;
 import ch.qos.logback.classic.Logger;
 import ch.qos.logback.classic.spi.ILoggingEvent;
 import ch.qos.logback.core.read.ListAppender;
+import com.example.solution.constant.Constant;
 import com.example.solution.entity.Bird;
+import com.example.solution.entity.Chicken;
+import com.example.solution.entity.Duck;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.slf4j.LoggerFactory;
@@ -23,7 +26,37 @@ class SolutionApplicationTests {
         Bird bird = new Bird();
         bird.sing();
 
-        Assertions.assertEquals("I am singing", logsList.get(0)
+        Assertions.assertEquals(Constant.BIRD_SING, logsList.get(0)
+                .getMessage());
+    }
+
+    @Test
+    void ChickenSingTest() {
+        Logger logger = (Logger) LoggerFactory.getLogger(Chicken.class);
+        ListAppender<ILoggingEvent> listAppender = new ListAppender<>();
+        listAppender.start();
+        logger.addAppender(listAppender);
+        List<ILoggingEvent> logsList = listAppender.list;
+
+        Chicken chicken = new Chicken();
+        chicken.sing();
+
+        Assertions.assertEquals(Constant.CHICKEN_SING, logsList.get(0)
+                .getMessage());
+    }
+
+    @Test
+    void DuckSingTest() {
+        Logger logger = (Logger) LoggerFactory.getLogger(Duck.class);
+        ListAppender<ILoggingEvent> listAppender = new ListAppender<>();
+        listAppender.start();
+        logger.addAppender(listAppender);
+        List<ILoggingEvent> logsList = listAppender.list;
+
+        Duck duck = new Duck();
+        duck.sing();
+
+        Assertions.assertEquals(Constant.DUCK_SING, logsList.get(0)
                 .getMessage());
     }
 
